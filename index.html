@@ -16,6 +16,7 @@
 			var tb = document.getElementsByClassName("tweet-box")[0];
 
 			tb.onkeyup = function() {
+				"countChars('data','charcount');" onkeydown="countChars('data','charcount');" onmouseout="countChars('data','charcount');"></textarea><br>
 				console.log(tb.value);
 				//encode in UTF-32
 				//(4 bytes per codepoint, always)
@@ -62,8 +63,7 @@
 		<canvas id="c" style="outline:solid;">
 			Canvas
 		</canvas>
-		<textarea id="tweetbox" cols="40" rows="5"
-			  onkeyup="countChars('data','charcount');" onkeydown="countChars('data','charcount');" onmouseout="countChars('data','charcount');"></textarea><br>
+		<textarea class="tweetbox" cols="40" rows="5"
 		<span id="charcount"> 0 </span> characters entered.
 		<button onclick="updateDiv()">
 			Update text
