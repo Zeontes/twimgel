@@ -5,10 +5,7 @@
 		window.onload = function() {
 			window.c = document.getElementById("c");
 			c.width = 512;
-			c.height = ciel(512);
-			//c.height = (ciel(x/512)+1);
-			//x = amount of characters
-			//allows size of image to be reduced to only what's needed
+			c.height = 512;
 			window.ctx = c.getContext("2d");
 			var imgData = ctx.getImageData(0, 0, c.width, c.height)
 			var textData = new Uint8ClampedArray(imgData.data.length);
@@ -41,12 +38,6 @@
 				ctx.putImageData(imgData, 0, 0);
 			}
 		}
-			<script type="text/javascript">
-				function countChars(countfrom,displayto) {
-				var len = document.getElementById(countfrom).value.length;
-				document.getElementById(displayto).innerHTML = len;
-}
-</script>
 
 		function updateDiv() {
 			var outText = []
@@ -62,7 +53,6 @@
 			}
 			document.getElementById("out").innerHTML = outText.join("");
 		}
-			
 		</script>
 	</head>
 	<body>
@@ -70,6 +60,10 @@
 			Canvas
 		</canvas>
 		<textarea class="tweet-box">
+			onkeyup="countChars('data','charcount');" onkeydown="countChars('data','charcount');" onmouseout="countChars('data','charcount');">
+		</textarea><br>
+		<span id="charcount">0
+		</span> characters entered.
 		</textarea>
 		<button onclick="updateDiv()">
 			Update text
