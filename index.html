@@ -44,9 +44,12 @@
 			}
 		}
 			}
-		" onkeydown="countChars('data','charcount');" onmouseout="countChars('data','charcount');"
+		tb.onkeydown = function() {
+			countChars('data','charcount');
 			}
-
+		tb.onmouseout = function() {
+			countChars('data','charcount');
+		}
 		function updateDiv() {
 			var outText = []
 			var outImg = ctx.getImageData(0,0,c.width,c.height);
