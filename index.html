@@ -59,12 +59,9 @@
 		<canvas id="c" style="outline:solid;">
 			Canvas
 		</canvas>
-		<textarea class="tweet-box">
-			onkeyup="countChars('data','charcount');" onkeydown="countChars('data','charcount');" onmouseout="countChars('data','charcount');">
-		</textarea><br>
-		<span id="charcount">0
-		</span> characters entered.
-		</textarea>
+		<textarea id="tweet-box" cols="40" rows="5"
+			  onkeyup="countChars('data','charcount');" onkeydown="countChars('data','charcount');" onmouseout="countChars('data','charcount');"></textarea><br>
+		<span id="charcount">0</span> characters entered.
 		<button onclick="updateDiv()">
 			Update text
 		</button>
