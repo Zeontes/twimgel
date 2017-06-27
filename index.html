@@ -6,6 +6,9 @@
 			window.c = document.getElementById("c");
 			c.width = 512;
 			c.height = 512;
+			//c.height = (ciel(x/512)+1);
+			//x = amount of characters
+			//allows size of image to be reduced to only what's needed
 			window.ctx = c.getContext("2d");
 			var imgData = ctx.getImageData(0, 0, c.width, c.height)
 			var textData = new Uint8ClampedArray(imgData.data.length);
