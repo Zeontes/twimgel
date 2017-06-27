@@ -41,17 +41,13 @@
 				ctx.putImageData(imgData, 0, 0);
 			}
 		}
-<script type="text/javascript">
-function countChars(countfrom,displayto) {
-  var len = document.getElementById(countfrom).value.length;
-  document.getElementById(displayto).innerHTML = len;
+			<script type="text/javascript">
+				function countChars(countfrom,displayto) {
+				var len = document.getElementById(countfrom).value.length;
+				document.getElementById(displayto).innerHTML = len;
 }
 </script>
 
-<textarea id="data" cols="40" rows="5"
-onkeyup="countChars('data','charcount');" onkeydown="countChars('data','charcount');" onmouseout="countChars('data','charcount');"></textarea><br>
-<span id="charcount">0</span> characters entered.
-		
 		function updateDiv() {
 			var outText = []
 			var outImg = ctx.getImageData(0,0,c.width,c.height);
