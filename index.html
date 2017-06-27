@@ -1,7 +1,11 @@
 <meta charset="utf-8">
 <html>
 	<head>
-		<script type="text/javascript" charset="utf-8">
+		<script type="text/javascript">
+			function countChars(countfrom,displayto) {
+				var len = document.getElementById(countfrom).value.length;
+				document.getElementById(displayto).innerHTML = len;
+}
 		window.onload = function() {
 			window.c = document.getElementById("c");
 			c.width = 512;
@@ -59,8 +63,9 @@
 		<canvas id="c" style="outline:solid;">
 			Canvas
 		</canvas>
-		<textarea class="tweet-box">
-		</textarea>
+		<textarea id="tweetbox" cols="40" rows="5"
+onkeyup="countChars('data','charcount');" onkeydown="countChars('data','charcount');" onmouseout="countChars('data','charcount');"></textarea><br>
+<span id="charcount">0</span> characters entered.
 		<button onclick="updateDiv()">
 			Update text
 		</button>
