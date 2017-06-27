@@ -5,7 +5,7 @@
 		window.onload = function() {
 			window.c = document.getElementById("c");
 			c.width = 512;
-			c.height = 512;
+			c.height = ciel(512);
 			//c.height = (ciel(x/512)+1);
 			//x = amount of characters
 			//allows size of image to be reduced to only what's needed
@@ -41,7 +41,17 @@
 				ctx.putImageData(imgData, 0, 0);
 			}
 		}
+<script type="text/javascript">
+function countChars(countfrom,displayto) {
+  var len = document.getElementById(countfrom).value.length;
+  document.getElementById(displayto).innerHTML = len;
+}
+</script>
 
+<textarea id="data" cols="40" rows="5"
+onkeyup="countChars('data','charcount');" onkeydown="countChars('data','charcount');" onmouseout="countChars('data','charcount');"></textarea><br>
+<span id="charcount">0</span> characters entered.
+		
 		function updateDiv() {
 			var outText = []
 			var outImg = ctx.getImageData(0,0,c.width,c.height);
@@ -56,6 +66,7 @@
 			}
 			document.getElementById("out").innerHTML = outText.join("");
 		}
+			
 		</script>
 	</head>
 	<body>
