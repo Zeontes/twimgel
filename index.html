@@ -2,16 +2,11 @@
 <html>
 	<head>
 		<script type="text/javascript" charset="utf-8">
-		var c,ctx;
-		var tb;
-		var imgData;
-		var textDataBuf;
-		var textData;
 		window.onload = function() {
-			c = document.getElementById("c");
+			window.c = document.getElementById("c");
 			c.width = 512;
 			c.height = 512;
-			ctx = c.getContext("2d");
+			window.ctx = c.getContext("2d");
 			var imgData = ctx.getImageData(0, 0, c.width, c.height)
 			var textData = new Uint8ClampedArray(imgData.data.length);
 
@@ -66,6 +61,9 @@
 		</canvas>
 		<textarea class="tweet-box">
 		</textarea>
+		<button onclick="updateDiv()">
+			Update text
+		</button>
 		<div id="out">
 		</div>
 	</body>
