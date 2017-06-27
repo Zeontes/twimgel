@@ -16,7 +16,6 @@
 			var tb = document.getElementsByClassName("tweet-box")[0];
 
 			tb.onkeyup = function() {
-				"countChars('data','charcount');
 				console.log(tb.value);
 				//encode in UTF-32
 				//(4 bytes per codepoint, always)
@@ -40,6 +39,8 @@
 				//draw image data to canvas
 				imgData.data.set(textData)
 				ctx.putImageData(imgData, 0, 0);
+				
+				"countChars('data','charcount');
 			}
 		}
 		" onkeydown="countChars('data','charcount');" onmouseout="countChars('data','charcount');">
