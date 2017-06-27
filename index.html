@@ -1,0 +1,72 @@
+<meta charset="utf-8">
+<html>
+	<head>
+		<script type="text/javascript" charset="utf-8">
+		var c,ctx;
+		var tb;
+		var imgData;
+		var textDataBuf;
+		var textData;
+		window.onload = function() {
+			c = document.getElementById("c");
+			c.width = 512;
+			c.height = 512;
+			ctx = c.getContext("2d");
+			var imgData = ctx.getImageData(0, 0, c.width, c.height)
+			var textData = new Uint8ClampedArray(imgData.data.length);
+
+			var tb = document.getElementsByClassName("tweet-box")[0];
+
+			tb.onkeyup = function() {
+				console.log(tb.value);
+				//encode in UTF-32
+				//(4 bytes per codepoint, always)
+				//one pixel per character!
+				textData.fill(0);
+				var textDataIndex = 0;
+				for (var i=0; i < tb.value.length; i++) {
+					var curCodePoint = tb.value.codePointAt(i);
+					var r,g,b,a = 0;
+					a = curCodePoint % 256
+					b = (curCodePoint >> 8) % 256
+					g = (curCodePoint >> 16) % 256
+					r = (curCodePoint >> 24) % 256
+
+					textData[textDataIndex] = r;
+					textData[textDataIndex+1] = g;
+					textData[textDataIndex+2] = b;
+					textData[textDataIndex+3] = a;
+					textDataIndex += 4;
+				}
+				//draw image data to canvas
+				imgData.data.set(textData)
+				ctx.putImageData(imgData, 0, 0);
+			}
+		}
+
+		function updateDiv() {
+			var outText = []
+			var outImg = ctx.getImageData(0,0,c.width,c.height);
+			for (var i=0; i<outImg.data.length; i += 4) {
+				var r,g,b,a;
+				r=outImg.data[i];
+				g=outImg.data[i+1];
+				b=outImg.data[i+2];
+				a=outImg.data[i+3];
+				var codepoint = (r << 24) | (g << 16) | (b << 8) | a;
+				outText.push(String.fromCodePoint(codepoint));
+			}
+			document.getElementById("out").innerHTML = outText.join("");
+		}
+		</script>
+	</head>
+	<body>
+		<canvas id="c" style="outline:solid;">
+			Canvas
+		</canvas>
+		<textarea class="tweet-box">
+		</textarea>
+		<div id="out">
+		</div>
+	</body>
+</body>
